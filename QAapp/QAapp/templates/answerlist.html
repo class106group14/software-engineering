@@ -1,0 +1,32 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>answerlist</title>
+</head>
+
+<body>
+<center><font size = 6; color = blue>
+            <strong>我的回答: </font>
+        </center>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+{% for answer in myanswer_lst %}
+  <center>
+  <table>
+	<tr>
+  
+		<td><table border = 0 align = "center">
+		<tr><td><center>anwser:</center></td></tr>
+		</table></td>
+
+		<td><table>
+		<tr><td><center>{{answer.answer}}</center></td></tr>
+		</table></td>
+        <a href="/givescore/?id={{answer.answer}}"> 评分 </a>
+        <a href="/delanswer/?id={{question.quest}}"> 删除 </a>
+	</tr>
+	</table>
+	</center>
+	{% endfor %}
+</body>
+</html>

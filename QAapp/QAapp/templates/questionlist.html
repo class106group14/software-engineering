@@ -1,0 +1,25 @@
+﻿<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>questionlist</title>
+</head>
+
+<body>
+<center><font size = 6; color = blue>
+            <strong>The question: </font>
+        </center>
+<p>&nbsp;</p>
+{% for question in question_lst %} 
+    <tr> 
+     <td>
+     <a href="/showanswer/?id={{question.quest}}"> {{question.quest}} </a></td>
+     <td>
+     <a href="/delquestion/?id={{question.quest}}"> 删除 </a></td> 
+    </tr>
+	{% endfor %}
+<p>&nbsp;</p>
+<center>
+	<a href = "../question/"> 返回首页 </a>
+</center>
+</body>
+</html>

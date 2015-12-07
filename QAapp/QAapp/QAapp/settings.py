@@ -60,7 +60,7 @@ WSGI_APPLICATION = 'QAapp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',  
-        'NAME': 'QAdb',  
+        'NAME': 'qadb',  
         'USER': 'root',  
         'PASSWORD': '123456',
         'HOST': 'localhost',

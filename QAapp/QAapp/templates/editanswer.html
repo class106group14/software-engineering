@@ -5,18 +5,27 @@
 </head>
 
 <body>
-<center><font size = 2; color = black>
-	<h1>{{t.question}}</h1></center>
+<center><font size = 4; color = black>
+	<h1>{{question}}</h1></center>
 <p>&nbsp;</p>
-<p align="center"><strong>答案 </strong> <input type="text" name="answer" value={{t.answer}}> </p>
-<form method="post" action="/editanswer/">
+<p align="center">
+<strong>答案</strong> 
+</p>
+
+<center>
+<form method="get" action="/editanswer/">
+{% for answer in answer_lst %}
             <p align="center">
-              	<center><button> 
-                	<a href ="../editanswer/"> 提交 </a></button>
-			<button>
-			<a href ="../editanswer/"> 增加 
-        	</button></center>
+	{{answer.answer}} 
+<button> <a href ="../changeanswer/?origin={{answer.answer}}&ques={{question}}" target="_blank"> 修改 </a></button>
             </p>
+{% endfor %}
+<center>
+		<button>
+		<a href ="../addanswer/?ques={{question}}" target="_blank"> 增加 
+        	</button></center>
+</form>
+</center>
 <p>&nbsp;</p>
 <center>
 	<a href = "../question/"> 返回首页 </a>

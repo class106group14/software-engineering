@@ -1,4 +1,4 @@
-<html>
+锘�<html>
 <head>
 <title>login</title>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
@@ -13,33 +13,19 @@
 <p>&nbsp;</p>
 <p><center>
 	<font size = 9; color = red>
-		<strong>欢迎访问在线问答系统</strong>
+		<strong>娆㈣繋璁块棶鍦ㄧ嚎闂瓟绯荤粺</strong>
 	</font>
 	<p>&nbsp;</p>
 <p>&nbsp;</p>
 </center></p>
-	<form method="post" action="/login/">
-    <center>
-  <table>
-	<tr>
-  
-		<td><table border = 0 align = "center">
-		<p align="center"><strong>用户名:  </strong> </p><p align="center"><strong>密码:  </strong> </p></center>
-		</table></td>
-
-		<td><table border = 0 align = "center">
-		<center><p><input type="text" name="username" placeholder="用户名" class="login-field"></p></center><p><input type="text" name="password" placeholder="密码" class="login-field"></p> </center>
-		</table></td>
-	</tr>
-	</table>
-    </center>
-    <p>&nbsp;</p>
-    <center><input type="submit" value="登陆"/></center>
-        
+	<form method="post" enctype="multipart/form-data">
+        <center>{{ userform.as_p }}</center>
+        <p>&nbsp;</p>
+        <center><input type="submit" value="鐧诲綍"/></center>
     </form>
 	<p>&nbsp;</p>
 <center>
-	<a href = "../register/"> 用户注册 </a>
+	<a href = "../register/"> 鐢ㄦ埛娉ㄥ唽 </a>
 </center>
 </body>
 </html>

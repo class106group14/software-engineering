@@ -1,0 +1,30 @@
+﻿<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>ques-ans</title>
+</head>
+
+<body>
+<p>&nbsp;</p>
+	<p><center>
+	<font size = 5; color = blue>
+		<strong>{{question}}</strong>
+	</font>
+    </center>
+    <p>&nbsp;</p>
+    {% for ans in answer_lst %}
+    <center>
+    <td><table>
+		<tr><td><center>{{ans}}</center></td></tr>
+		</table></td>
+        <a href="/givescore/?id={{ans}}"> 评分 </a>
+    </center>
+    {% endfor %}
+    <p>&nbsp;</p>
+    <center>
+    <form method="post" action="/question/">
+    <a href="/question/">返回主页</a>
+    </form>
+    </center>
+</body>
+</html>

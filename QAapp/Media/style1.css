@@ -1,0 +1,49 @@
+#menu {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	width: 774px;
+	height: 210px;
+	background: url(menu-bg.jpg) no-repeat;
+	position: relative;
+}
+#menu span {
+	display: none;
+	position: absolute;
+}
+#menu a {
+	display: block;
+	text-indent: -900%;
+	position: absolute;
+	outline: none;
+}
+#menu a:hover {
+	background-position: left bottom;
+}
+#menu a:hover span{
+	display: block;
+}
+#menu .home {
+	width: 234px;
+	height: 42px;
+	background: url(1.png) no-repeat;
+	left: 36px;
+	top: 73px;
+}
+
+#menu .about {
+	width: 234px;
+	height: 42px;
+	background: url(2.png) no-repeat;
+	left: 308px;
+	top: 97px;
+}
+
+#menu .rss {
+	width: 185px;
+	height: 47px;
+	background: url(3.png) no-repeat;
+	left: 548px;
+	top: 94px;
+}
+

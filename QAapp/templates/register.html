@@ -1,0 +1,46 @@
+﻿<html>  
+<head>
+<title>register</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<meta name="keywords" content="Flat Dark Web Login Form Responsive Templates, Iphone Widget Template, Smartphone login forms,Login form, Widget Template, Responsive Templates, a Ipad 404 Templates, Flat Responsive Templates" />
+<link href="../Media/style.css" rel='stylesheet' type='text/css' />
+<!--webfonts-->
+</head>
+<body>
+<script>$(document).ready(function(c) {
+    $('.close').on('click', function(c){
+        $('.login-form').fadeOut('slow', function(c){
+            $('.login-form').remove();
+        });
+    });   
+});
+</script>
+ <!--SIGN UP-->
+ <h1> 欢迎注册</h1>
+<div class="login-form">
+    <div class="close"> </div>
+        <div class="head-info">
+            <label class="lbl-1"> </label>
+            <label class="lbl-2"> </label>
+            <label class="lbl-3"> </label>
+        </div>
+            <div class="clear"> </div>
+    <div class="avtar">
+        <img src="../Media/head_120.png" />
+    </div>
+            <form method="post" enctype="multipart/form-data">
+        <center>{{ userform.as_p }}</center>
+        <input type="submit" value="注册" >
+    </form>
+    <div>
+    <p><a href = "../login/"><font size="5;" color="green"> 返回登陆界面 </font></a></p>   
+    </div>
+
+</div>
+ <div class="copy-rights">
+                    <p>Copyright &copy; 哈尔滨工业大学计算机学院2013级6班14组 赵斌 王立伟 赵茁竹 于小淞</p>
+            </div>
+
+</body>
+</html>

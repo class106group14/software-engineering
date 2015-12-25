@@ -2,20 +2,20 @@ from django.db import models
 
 # Create your models here.
 class Answer(models.Model):
-    answer = models.CharField(primary_key=True,max_length = 250)
+    answer = models.CharField(primary_key=True,max_length = 220)
     score = models.FloatField()
     
     def __unicode__(self):
         return self.answer
 
 class Question(models.Model):
-    question = models.CharField(primary_key=True,max_length = 200)
+    question = models.CharField(primary_key=True,max_length = 100)
     answers = models.ManyToManyField(Answer)
     def __unicode__(self):
         return self.question
         
 class Questionans(models.Model):
-    question = models.CharField(primary_key=True,max_length = 200)
+    question = models.CharField(primary_key=True,max_length = 100)
     answers = models.ManyToManyField(Answer)
     def __unicode__(self):
         return self.question

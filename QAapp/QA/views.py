@@ -154,8 +154,11 @@ def changeanswer(request):
         anso = request.session.get('ans')
         multiple_answer = Answer.objects.get(answer = anso)
         ques = request.session.get('questionc')
-        questionall = Question.objects.get(question = ques)#tianjia jin suoyouwenti 
-        questionall.answers.remove(multiple_answer)
+        questionall = Question.objects.get(question = ques)#
+        questionall.answers.remove(multiple_answer)#yichu yuanlai de 
+        multiple_question = Questionans(question = ques)
+        if (multiple_question):
+            multiple_question.answers.remove(multiple_answer)
         multiple_answer.answer = ans
         multiple_answer.save()
         multiple_question = Questionans(question = ques)#添加到我的回答中
@@ -167,6 +170,45 @@ def changeanswer(request):
         user1.myanswers.add(multiple_question)
         del request.session['ans']
         del request.session['questionc']
+        messa = '答案修改成功'
+        return render_to_response('message.html',{'message':messa})
+        
+def changeaddanswer(request):#修改增加
+    if 'origin' in request.GET and 'ques' in request.GET:
+        orig = request.GET['origin']
+        ques = request.GET['ques']
+        request.session['questionc'] = ques
+        request.session['ans'] = orig
+        #return HttpResponse(chan)
+        multiple_answer = Answer.objects.get(answer = orig)
+        multiple_question = Questionans(question = ques)
+        return render_to_response('changeaddans.html',{'answer':multiple_answer,'question':multiple_question})
+    if request.POST:
+        ans = request.POST['answer']
+        anso = request.session.get('ans')
+        ques = request.session.get('questionc')
+        multiple_answer = Answer.objects.get(answer = anso)
+        questionall = Question.objects.get(question = ques)#
+        multiple_question = Questionans(question = ques)
+        if (multiple_question):
+            answers = multiple_question.answers.all()
+            if multiple_answer in answers:
+                multiple_question.answers.remove(multiple_answer)#之前回答过
+                multiple_answer.answer = ans
+            else:
+                multiple_answer = Answer(answer = ans,score = 60)
+        else:
+            multiple_answer = Answer(answer = ans,score = 60)
+        multiple_answer.save()
+        multiple_question = Questionans(question = ques)#添加到我的回答中
+        multiple_question.save()
+        multiple_question.answers.add(multiple_answer)
+        questionall.answers.add(multiple_answer)#添加到所有问题中
+        usern = request.session.get('username')#baoun
+        user1 = User.objects.get(username = usern)
+        user1.myanswers.add(multiple_question)
+        del request.session['questionc']
+        del request.session['ans']
         messa = '答案修改成功'
         return render_to_response('message.html',{'message':messa})
 
@@ -199,7 +241,7 @@ def answerlist(request):
         ques = Questionans.objects.get(question = quest)
         anslst = ques.answers.all()
         #return HttpResponse(anslst[0].answer)
-    return render_to_response('answerlist.html',{'answer_lst':anslst})
+    return render_to_response('answerlist.html',{'answer_lst':anslst,'quest':quest})
 
 def answer(request):#answer input keyword,search some question 
     if request.POST:
@@ -276,7 +318,7 @@ def deluser(request):  # which answer score lw
         n_user_lst = User.objects.filter(username=request.GET['id'])
         n_user_lst.delete()
     user_lst = User.objects.all()
-    return render_to_response('userlist.html', {'user': user_lst})
+    return render_to_response('userlist.html', {'user_lst': user_lst})
 
 def delquestion(request):#which answer score xs
     if 'id' in request.GET:

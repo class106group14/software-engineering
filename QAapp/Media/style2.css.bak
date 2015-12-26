@@ -1,0 +1,41 @@
+
+#menu span {
+	display: none;
+	position: absolute;
+}
+#menu a {
+	display: block;
+	text-indent: -900%;
+	position: absolute;
+	outline: none;
+}
+#menu a:hover {
+	background-position: left bottom;
+}
+#menu a:hover span{
+	display: block;
+}
+#menu .home {
+	width: 234px;
+	height: 50px;
+	background: url(11.jpg) no-repeat;
+	left: -100px;
+	top: 3px;
+}
+
+#menu .about {
+	width: 240px;
+	height: 50px;
+	background: url(22.jpg) no-repeat;
+	left: 180px;
+	top: 3px;
+}
+
+#menu .rss {
+	width: 250px;
+	height: 50px;
+	background: url(33.jpg) no-repeat;
+	left: 480px;
+	top: 3px;
+}
+

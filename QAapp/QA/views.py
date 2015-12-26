@@ -74,6 +74,7 @@ def showanswer(request):#q,a1,a2
                     maxindex = j
             samelst[i] += maxlen/250#daan de youxianxing
             anslst[i] = maxindex#yigewenti de zuichangdaan
+            #return HttpResponse(ques_lst[i].question)
             ans += [ansl[maxindex].answer]
         inda = samelst.index(max(samelst))#zuiyou wenti 
         #wenti chuanguoqu
@@ -159,6 +160,8 @@ def changeanswer(request):
         multiple_question = Questionans(question = ques)
         if (multiple_question):
             multiple_question.answers.remove(multiple_answer)
+            #multi_answer = Answer.objects.get(answer = anso)
+            #multi_answer.delete()shanchu zhiqian de jiudaan wei
         multiple_answer.answer = ans
         multiple_answer.save()
         multiple_question = Questionans(question = ques)#添加到我的回答中
@@ -307,6 +310,13 @@ def manageout(request):  # quxiao quanxian lw
 
 def userlist(request):  # lw
     user_lst = User.objects.all()
+    #usern = request.session.get('username')
+    #user1 = User.objects.get(username = usern)
+    #for i in range (0,len(user_lst)):
+   #     if user_lst[i] == user1:
+    #        ind = i
+    #        break
+   # del user_lst[ind]
     if user_lst[0].username:
         return render_to_response('userlist.html',{'user_lst':user_lst})
     else:
@@ -315,8 +325,12 @@ def userlist(request):  # lw
 
 def deluser(request):  # which answer score lw
     if 'id' in request.GET:
+        usern = request.session.get('username')
+        user1 = User.objects.get(username = usern)
         n_user_lst = User.objects.filter(username=request.GET['id'])
-        n_user_lst.delete()
+        if n_user_lst[0] != user1:
+            del request.session['username']
+            n_user_lst.delete()
     user_lst = User.objects.all()
     return render_to_response('userlist.html', {'user_lst': user_lst})
 
@@ -324,9 +338,19 @@ def delquestion(request):#which answer score xs
     if 'id' in request.GET:
         ques = request.GET['id']
         quest = Question.objects.get(question = ques)
+        questans = Questionans.objects.filter(question = ques)
+        if questans:
+            myanswers = questans[0].answers.all()
+            myanswers.delete()
+            questans[0].delete()
         answers = quest.answers.all()#delete answers
-        answers.delete()
-        quest.delete()
+        for i in range (0,len(answers)):
+            qlst = answers[i].question_set.all()
+            if qlst == []:
+                answers[i].delete()
+                i -= 1
+        #answers.delete()
+        quest.delete()####
         messa = '操作成功，该项问题已删除'
     return render_to_response('message.html',{'message':messa})
 

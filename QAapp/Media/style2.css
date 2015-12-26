@@ -2,9 +2,9 @@
 	list-style: none;
 	padding: 0;
 	margin: 0;
-	width: 774px;
-	height: 210px;
-	background: url(menu-bg.jpg) no-repeat;
+	width: 700px;
+	height: 150px;
+	background: url() no-repeat;
 	position: relative;
 }
 #menu span {
@@ -27,23 +27,23 @@
 	width: 234px;
 	height: 50px;
 	background: url(11.jpg) no-repeat;
-	left: 36px;
-	top: 73px;
+	left: -100px;
+	top: 3px;
 }
 
 #menu .about {
-	width: 240px;
+	width: 260px;
 	height: 50px;
 	background: url(22.jpg) no-repeat;
-	left: 270px;
-	top: 80px;
+	left: 180px;
+	top: 3px;
 }
 
 #menu .rss {
 	width: 250px;
 	height: 50px;
 	background: url(33.jpg) no-repeat;
-	left: 520px;
-	top: 94px;
+	left: 480px;
+	top: 3px;
 }
 
